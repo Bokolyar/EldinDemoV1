@@ -144,6 +144,39 @@
   transform: translateY(0);
 }
 
+/* Hero section - fits viewport on laptops with 125% scaling */
+.hero-section {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.hero-content {
+  padding-top: 5rem;
+  padding-bottom: 1.5rem;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+/* On short viewports (laptops 1080p @ 125% ≈ 730px) compress spacing */
+@media (max-height: 800px) and (min-width: 768px) {
+  .hero-content {
+    padding-top: 4.5rem;
+    padding-bottom: 1rem;
+  }
+  .btn-primary,
+  .btn-outline {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 768px) {
+  .hero-content {
+    padding-top: 4rem;
+    padding-bottom: 0.75rem;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #f1f1f1; }
