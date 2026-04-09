@@ -29,13 +29,13 @@ const categories = [
     title: 'Металлообработка',
     description: 'Сварка, резка, гибка металла на современном оборудовании',
     icon: Wrench,
-    image: '/product-drive.jpg',
+    image: '/hero-bg.jpg',
   },
   {
     title: 'Насосы',
     description: 'Промышленные насосы для различных отраслей применения',
     icon: Droplets,
-    image: '/product-generator.jpg',
+    image: '/product-motor.jpg',
   },
 ];
 

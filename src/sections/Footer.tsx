@@ -70,10 +70,10 @@ export default function Footer() {
       <div className="border-t border-gray-800">
         <div className="container-custom py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-500">&copy; 2026 АО &laquo;ЭЛДИН&raquo;. Все права защищены.</p>
-          <div className="flex gap-6">
-            <a href="#" className="text-sm text-gray-500 hover:text-white transition-colors">Политика конфиденциальности</a>
-            <a href="#" className="text-sm text-gray-500 hover:text-white transition-colors">Пользовательское соглашение</a>
-            <a href="#" className="text-sm text-gray-500 hover:text-white transition-colors">Карта сайта</a>
+          <div className="flex flex-wrap justify-center md:justify-end gap-4 sm:gap-6">
+            <a href="#" className="text-xs sm:text-sm text-gray-500 hover:text-white transition-colors">Политика конфиденциальности</a>
+            <a href="#" className="text-xs sm:text-sm text-gray-500 hover:text-white transition-colors">Пользовательское соглашение</a>
+            <a href="#" className="text-xs sm:text-sm text-gray-500 hover:text-white transition-colors">Карта сайта</a>
           </div>
         </div>
       </div>

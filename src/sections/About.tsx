@@ -6,16 +6,16 @@ export default function About() {
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image side */}
-          <div className="relative">
+          <div className="relative mb-8 lg:mb-0">
             <div className="relative rounded-2xl overflow-hidden">
               <img
                 src="/hero-bg.jpg"
                 alt="Производство ЭЛДИН"
-                className="w-full h-80 lg:h-[28rem] object-cover"
+                className="w-full h-64 sm:h-80 lg:h-[28rem] object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 lg:bottom-8 lg:-right-8 bg-eldin-gold rounded-2xl p-6 shadow-xl">
-              <div className="text-4xl font-bold text-white">70+</div>
+            <div className="absolute -bottom-4 right-4 sm:-bottom-6 sm:-right-6 lg:bottom-8 lg:-right-8 bg-eldin-gold rounded-2xl p-4 sm:p-6 shadow-xl">
+              <div className="text-3xl sm:text-4xl font-bold text-white">70+</div>
               <div className="text-white/90 text-sm">лет опыта</div>
             </div>
           </div>

@@ -65,7 +65,7 @@ export default function Contacts() {
 
           {/* Right side - form */}
           <div>
-            <div className="bg-white rounded-2xl p-8">
+            <div className="bg-white rounded-2xl p-5 sm:p-8">
               <h3 className="text-xl font-bold text-eldin-blue mb-6">Оставить заявку</h3>
               <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                 <input

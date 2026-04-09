@@ -31,12 +31,12 @@ export default function Header() {
           <a href="/" className="flex items-center">
             <img
               alt="ЭЛДИН - Ярославский электромашиностроительный завод"
-              className={`h-10 md:h-12 w-auto transition-opacity duration-300 ${scrolled ? 'opacity-0 absolute' : 'opacity-100'}`}
+              className={`h-8 sm:h-10 md:h-12 w-auto transition-opacity duration-300 ${scrolled ? 'opacity-0 absolute' : 'opacity-100'}`}
               src="/logo_dark.png"
             />
             <img
               alt="ЭЛДИН - Ярославский электромашиностроительный завод"
-              className={`h-10 md:h-12 w-auto transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 absolute'}`}
+              className={`h-8 sm:h-10 md:h-12 w-auto transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 absolute'}`}
               src="/logo_light.png"
             />
           </a>
