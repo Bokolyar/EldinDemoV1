@@ -1,73 +1,64 @@
-import { Download, Settings, FileText, Rss } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 
-const Footer = () => {
-  const footerLinks = {
-    company: [
-      { label: 'О компании ЭЛДИН', href: '#about' },
-      { label: 'Продукция', href: '#products' },
-      { label: 'Решения', href: '#solutions' },
-      { label: 'Инвесторы', href: '#' },
-      { label: 'Этика', href: '#' },
-      { label: 'Поддержка', href: '#' },
-    ],
-    quickLinks: [
-      { label: 'Download Center', href: '#', icon: Download },
-      { label: 'Настройки', href: '#', icon: Settings },
-      { label: 'Privacy Notice', href: '#', icon: FileText },
-      { label: 'Cookie Statement', href: '#', icon: FileText },
-      { label: 'Terms of Use', href: '#', icon: FileText },
-      { label: 'RSS', href: '#', icon: Rss },
-    ],
-  };
+const productLinks = ['Электродвигатели', 'Электроприводы', 'Генераторы', 'Насосы', 'Весь каталог'];
+const serviceLinks = ['Литейное производство', 'Лазерная резка', 'Сварка металла', 'Гибка металла'];
+const companyLinks = ['О компании', 'Новости', 'Карьера', 'Контакты'];
 
+export default function Footer() {
   return (
-    <footer className="bg-weg-navy text-white">
-      {/* Main Footer */}
-      <div className="container-weg py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Logo & Description */}
-          <div className="lg:col-span-2">
-            <img
-              src="/logo_dark.png"
-              alt="ЭЛДИН"
-              className="h-12 w-auto mb-6"
-            />
-            <p className="text-white/60 max-w-md leading-relaxed">
-              Ярославский электромашиностроительный завод — ведущий производитель 
-              электротехнической продукции в России с 1954 года.
+    <footer className="bg-eldin-blue text-white">
+      <div className="container-custom py-12 lg:py-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          {/* About */}
+          <div>
+            <img src="/logo_light.png" alt="ЭЛДИН" className="h-10 mb-4" />
+            <p className="text-sm text-white/70 mb-6">
+              Ярославский электромашиностроительный завод. Производство электродвигателей, электроприводов, генераторов и промышленных насосов с 1954 года.
             </p>
+            <div className="space-y-2">
+              <a href="tel:+74852780000" className="flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors">
+                <Phone className="w-4 h-4" /> +7 (4852) 78-00-00
+              </a>
+              <a href="mailto:info@eldin.ru" className="flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors">
+                <Mail className="w-4 h-4" /> info@eldin.ru
+              </a>
+              <div className="flex items-start gap-2 text-sm text-white/80">
+                <MapPin className="w-4 h-4 mt-0.5 shrink-0" /> 150040, Ярославль, пр-т. Октября, 74
+              </div>
+            </div>
           </div>
 
-          {/* Company Links */}
+          {/* Products */}
           <div>
-            <h4 className="font-semibold text-lg mb-6">О компании ЭЛДИН</h4>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-white/60 hover:text-weg-gold transition-colors"
-                  >
-                    {link.label}
-                  </a>
+            <h4 className="font-bold mb-4">Продукция</h4>
+            <ul className="space-y-2">
+              {productLinks.map((l) => (
+                <li key={l}>
+                  <a href="#products" className="text-sm text-white/70 hover:text-white transition-colors">{l}</a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Quick Links */}
+          {/* Services */}
           <div>
-            <h4 className="font-semibold text-lg mb-6">Quick Links</h4>
-            <ul className="space-y-3">
-              {footerLinks.quickLinks.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-white/60 hover:text-weg-gold transition-colors flex items-center gap-2"
-                  >
-                    <link.icon className="w-4 h-4" />
-                    {link.label}
-                  </a>
+            <h4 className="font-bold mb-4">Услуги</h4>
+            <ul className="space-y-2">
+              {serviceLinks.map((l) => (
+                <li key={l}>
+                  <a href="#services" className="text-sm text-white/70 hover:text-white transition-colors">{l}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="font-bold mb-4">Компания</h4>
+            <ul className="space-y-2">
+              {companyLinks.map((l) => (
+                <li key={l}>
+                  <a href="#" className="text-sm text-white/70 hover:text-white transition-colors">{l}</a>
                 </li>
               ))}
             </ul>
@@ -75,29 +66,16 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Bar */}
+      {/* Bottom */}
       <div className="border-t border-white/10">
-        <div className="container-weg py-6">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div className="text-white/40 text-sm">
-              © {new Date().getFullYear()} АО «ЭЛДИН». Все права защищены.
-            </div>
-            <div className="flex items-center gap-6 text-sm">
-              <a href="#" className="text-white/40 hover:text-white transition-colors">
-                Privacy Notice
-              </a>
-              <a href="#" className="text-white/40 hover:text-white transition-colors">
-                Cookie Statement
-              </a>
-              <a href="#" className="text-white/40 hover:text-white transition-colors">
-                Terms of Use
-              </a>
-            </div>
+        <div className="container-custom py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-white/50">&copy; 2024 АО &laquo;ЭЛДИН&raquo;. Все права защищены.</p>
+          <div className="flex gap-4">
+            <a href="#" className="text-xs text-white/50 hover:text-white transition-colors">Политика конфиденциальности</a>
+            <a href="#" className="text-xs text-white/50 hover:text-white transition-colors">Карта сайта</a>
           </div>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

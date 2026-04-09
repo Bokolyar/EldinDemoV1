@@ -1,120 +1,89 @@
 import { useState, useEffect } from 'react';
-import { Search, BarChart2, User, Menu, X, ChevronDown } from 'lucide-react';
+import { Phone, Menu, X, ChevronDown } from 'lucide-react';
 
-const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const navItems = [
+  { label: 'О компании', href: '#about' },
+  { label: 'Продукция', href: '#products', hasDropdown: true },
+  { label: 'Услуги', href: '#services' },
+  { label: 'Новости', href: '#news' },
+  { label: 'Контакты', href: '#contacts' },
+];
+
+export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  const navItems = [
-    { label: 'О компании', href: '#about' },
-    { label: 'Продукция', href: '#products', hasDropdown: true },
-    { label: 'Решения', href: '#solutions', hasDropdown: true },
-    { label: 'Инвесторы', href: '#' },
-    { label: 'Этика', href: '#' },
-    { label: 'Поддержка', href: '#' },
-    { label: 'Новости', href: '#news' },
-    { label: 'Карьера', href: '#' },
-  ];
 
   return (
     <header
-      className={`header-weg ${isScrolled ? 'scrolled' : 'transparent'}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white shadow-lg py-3' : 'bg-white/95 backdrop-blur-sm py-4'
+      }`}
     >
-      <div className="container-weg">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <a href="/" className="flex items-center">
-            <img
-              src="/logo_dark.png"
-              alt="ЭЛДИН"
-              className={`h-10 w-auto transition-all duration-300 ${
-                isScrolled ? '' : 'brightness-0 invert'
-              }`}
-            />
-          </a>
+      <div className="container-custom flex items-center justify-between">
+        <a href="#" className="flex items-center gap-3">
+          <img src="/logo_original.png" alt="ЭЛДИН" className="h-10" />
+          <span className="hidden sm:block text-xs leading-tight text-eldin-gray">
+            Ярославский<br />электромашиностроительный<br />завод
+          </span>
+        </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-8">
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-eldin-blue transition-colors"
+            >
+              {item.label}
+              {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
+            </a>
+          ))}
+        </nav>
+
+        <div className="hidden lg:flex items-center gap-6">
+          <a href="tel:+74852780000" className="flex items-center gap-2 text-sm font-medium text-gray-700">
+            <Phone className="w-4 h-4" />
+            +7 (4852) 78-00-00
+          </a>
+          <a href="#contacts" className="btn-primary text-sm !px-5 !py-2.5">
+            Оставить заявку
+          </a>
+        </div>
+
+        <button className="lg:hidden p-2" onClick={() => setMobileOpen(!mobileOpen)}>
+          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+
+      {mobileOpen && (
+        <div className="lg:hidden bg-white border-t mt-2 py-4">
+          <div className="container-custom flex flex-col gap-4">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors ${
-                  isScrolled
-                    ? 'text-gray-700 hover:text-weg-navy'
-                    : 'text-white/90 hover:text-white'
-                }`}
+                className="text-sm font-medium text-gray-700 hover:text-eldin-blue"
+                onClick={() => setMobileOpen(false)}
               >
                 {item.label}
-                {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
               </a>
             ))}
-          </nav>
-
-          {/* Right Side Icons */}
-          <div className="flex items-center gap-4">
-            <button
-              className={`p-2 transition-colors ${
-                isScrolled ? 'text-gray-700 hover:text-weg-navy' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              <Search className="w-5 h-5" />
-            </button>
-            <button
-              className={`p-2 transition-colors ${
-                isScrolled ? 'text-gray-700 hover:text-weg-navy' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              <BarChart2 className="w-5 h-5" />
-            </button>
-            <button
-              className={`p-2 transition-colors ${
-                isScrolled ? 'text-gray-700 hover:text-weg-navy' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              <User className="w-5 h-5" />
-            </button>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`xl:hidden p-2 transition-colors ${
-                isScrolled ? 'text-gray-700' : 'text-white'
-              }`}
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            <a href="tel:+74852780000" className="flex items-center gap-2 text-sm font-medium text-gray-700">
+              <Phone className="w-4 h-4" />
+              +7 (4852) 78-00-00
+            </a>
+            <a href="#contacts" className="btn-primary text-sm text-center" onClick={() => setMobileOpen(false)}>
+              Оставить заявку
+            </a>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="xl:hidden bg-white border-t py-4">
-            <nav className="flex flex-col gap-2">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-        )}
-      </div>
+      )}
     </header>
   );
-};
-
-export default Header;
+}

@@ -1,112 +1,87 @@
 import { ArrowRight, Zap, Settings, Power, Flame, Wrench, Droplets } from 'lucide-react';
 
-const Categories = () => {
-  const categories = [
-    {
-      icon: Zap,
-      title: 'Электродвигатели',
-      count: '45 товаров',
-      description: 'Асинхронные и синхронные двигатели мощностью от 0.12 до 1250 кВт',
-      image: '/product-motor.jpg',
-    },
-    {
-      icon: Settings,
-      title: 'Электроприводы',
-      count: '18 товаров',
-      description: 'Комплектные электроприводы для промышленных приложений',
-      image: '/product-drive.jpg',
-    },
-    {
-      icon: Power,
-      title: 'Генераторы',
-      count: '12 товаров',
-      description: 'Синхронные генераторы для электростанций',
-      image: '/product-generator.jpg',
-    },
-    {
-      icon: Flame,
-      title: 'Литейное производство',
-      count: '8 услуг',
-      description: 'Литье цветных сплавов и чугуна',
-      image: '/product-foundry.jpg',
-    },
-    {
-      icon: Wrench,
-      title: 'Металлообработка',
-      count: '6 услуг',
-      description: 'Сварка, резка, гибка металла',
-      image: '/hero-bg.jpg',
-    },
-    {
-      icon: Droplets,
-      title: 'Насосы',
-      count: '15 товаров',
-      description: 'Промышленные насосы различного назначения',
-      image: '/product-motor.jpg',
-    },
-  ];
+const categories = [
+  {
+    title: 'Электродвигатели',
+    description: 'Асинхронные и синхронные двигатели мощностью от 0.12 до 1250 кВт',
+    icon: Zap,
+    image: '/product-motor.jpg',
+  },
+  {
+    title: 'Электроприводы',
+    description: 'Комплектные электроприводы для промышленных приложений',
+    icon: Settings,
+    image: '/product-drive.jpg',
+  },
+  {
+    title: 'Генераторы',
+    description: 'Синхронные генераторы для электростанций и промышленности',
+    icon: Power,
+    image: '/product-generator.jpg',
+  },
+  {
+    title: 'Литейное производство',
+    description: 'Литье цветных сплавов и чугуна по современным технологиям',
+    icon: Flame,
+    image: '/product-foundry.jpg',
+  },
+  {
+    title: 'Металлообработка',
+    description: 'Сварка, резка, гибка металла на современном оборудовании',
+    icon: Wrench,
+    image: '/product-drive.jpg',
+  },
+  {
+    title: 'Насосы',
+    description: 'Промышленные насосы для различных отраслей применения',
+    icon: Droplets,
+    image: '/product-generator.jpg',
+  },
+];
 
+export default function Categories() {
   return (
-    <section id="catalog" className="section-template bg-white">
-      <div className="container-template">
+    <section id="products" className="section-padding bg-white">
+      <div className="container-custom">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
-          <div>
-            <h2 className="section-title">Продукция</h2>
-            <p className="section-subtitle max-w-xl">
-              Каталог товаров. На сайте вы найдете электродвигатели, 
-              электроприводы, генераторы и промышленные насосы. 
-              Наша продукция занимает лидирующие позиции на рынке России.
-            </p>
-          </div>
-          <a href="#" className="btn-outline-template inline-flex items-center gap-2">
-            Весь каталог
-            <ArrowRight className="w-4 h-4" />
-          </a>
+        <div className="text-center mb-12">
+          <p className="section-label">Продукция</p>
+          <h2 className="section-title">Каталог продукции</h2>
+          <p className="section-subtitle mx-auto">
+            Широкий ассортимент электротехнической продукции собственного производства. Высокое качество и надежность подтверждены сертификатами.
+          </p>
         </div>
 
-        {/* Categories Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categories.map((category, index) => (
-            <a
-              key={index}
-              href="#"
-              className="card-template group"
-            >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={category.image}
-                  alt={category.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-template-primary/80 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 bg-template-accent rounded-lg flex items-center justify-center">
-                      <category.icon className="w-5 h-5 text-white" />
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {categories.map((cat) => {
+            const Icon = cat.icon;
+            return (
+              <div key={cat.title} className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+                <div className="relative h-52 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50">
+                  <img
+                    src={cat.image}
+                    alt={cat.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute bottom-4 left-4">
+                    <div className="w-10 h-10 rounded-lg bg-eldin-gold flex items-center justify-center text-white">
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-white/80 text-sm">{category.count}</span>
                   </div>
                 </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-eldin-blue mb-2">{cat.title}</h3>
+                  <p className="text-sm text-eldin-gray mb-4">{cat.description}</p>
+                  <a href="#" className="inline-flex items-center gap-1 text-sm font-semibold text-eldin-gold hover:text-eldin-gold-hover transition-colors">
+                    Подробнее <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
-              <div className="p-5">
-                <h3 className="font-bold text-template-primary text-lg mb-2 group-hover:text-template-accent transition-colors">
-                  {category.title}
-                </h3>
-                <p className="text-gray-500 text-sm mb-4">
-                  {category.description}
-                </p>
-                <span className="inline-flex items-center gap-2 text-template-accent font-medium text-sm">
-                  Подробнее
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </div>
-            </a>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
   );
-};
-
-export default Categories;
+}

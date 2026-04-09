@@ -2,7 +2,34 @@
   "permissions": {
     "allow": [
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git config:*)",
+      "Bash(git remote:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "WebFetch(domain:ehirwtlarrxlm.ok.kimi.link)",
+      "Bash(npm run:*)",
+      "Bash(where npx:*)",
+      "Read(//c//**)",
+      "Bash(export PATH=\"$PATH:/c/Program Files/nodejs\")",
+      "Read(//c/Users/AgentFM/AppData/Roaming/**)",
+      "Read(//c/ProgramData/**)",
+      "Bash(find /c -name \"npm.cmd\" -maxdepth 5)",
+      "Bash(cmd.exe /c \"where npm\")",
+      "Read(//c/Users/AgentFM/AppData/Local/**)",
+      "Read(//d//**)",
+      "Bash(cmd.exe /c \"where node\")",
+      "Bash(cmd.exe /c \"node --version\")",
+      "Bash(powershell.exe -Command \"Get-Command node -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source\")",
+      "Bash(powershell.exe -Command \"winget install OpenJS.NodeJS.LTS --accept-source-agreements --accept-package-agreements\")",
+      "Bash(npm install:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Read(//c/Program Files/nodejs/**)",
+      "Bash(\"/c/Program Files/nodejs/npm.cmd\" --version)",
+      "Bash(cmd.exe /c \"del /f D:\\\\Projects\\\\Eldin\\\\.git\\\\index.lock\")",
+      "Bash(powershell.exe -Command \"Remove-Item -Force ''D:\\\\Projects\\\\Eldin\\\\.git\\\\index.lock''\")",
+      "Bash(powershell.exe -Command \"Get-Process git -ErrorAction SilentlyContinue | Stop-Process -Force\")"
     ]
   }
 }

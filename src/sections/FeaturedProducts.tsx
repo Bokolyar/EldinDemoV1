@@ -1,163 +1,101 @@
-import { useEffect, useRef } from 'react';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-const FeaturedProducts = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
+const products = [
+  {
+    badge: 'Хит продаж',
+    badgeColor: 'bg-red-500',
+    category: 'ЭЛЕКТРОДВИГАТЕЛИ',
+    name: 'Электродвигатель АИР 160S4',
+    specs: [
+      { label: 'Мощность', value: '15 кВт' },
+      { label: 'Напряжение', value: '380/660 В' },
+      { label: 'Частота вращения', value: '1500 об/мин' },
+    ],
+    inStock: true,
+  },
+  {
+    badge: 'Новинка',
+    badgeColor: 'bg-green-500',
+    category: 'ЭЛЕКТРОПРИВОДЫ',
+    name: 'Электропривод ЭПВ 315',
+    specs: [
+      { label: 'Мощность', value: '200 кВт' },
+      { label: 'Напряжение', value: '380 В' },
+      { label: 'Степень защиты', value: 'IP54' },
+    ],
+    inStock: true,
+  },
+  {
+    badge: 'В наличии',
+    badgeColor: 'bg-eldin-blue',
+    category: 'ГЕНЕРАТОРЫ',
+    name: 'Генератор ГСФ 800',
+    specs: [
+      { label: 'Мощность', value: '800 кВА' },
+      { label: 'Напряжение', value: '400 В' },
+      { label: 'Частота', value: '50 Гц' },
+    ],
+    inStock: true,
+  },
+  {
+    badge: null,
+    badgeColor: '',
+    category: 'ЭЛЕКТРОДВИГАТЕЛИ',
+    name: 'Электродвигатель АИР 200M6',
+    specs: [
+      { label: 'Мощность', value: '37 кВт' },
+      { label: 'Напряжение', value: '380/660 В' },
+      { label: 'Частота вращения', value: '1000 об/мин' },
+    ],
+    inStock: true,
+  },
+];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-up');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-
-    const elements = sectionRef.current?.querySelectorAll('.reveal');
-    elements?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
-  const products = [
-    {
-      name: 'Электродвигатель АИР 160S4',
-      category: 'Электродвигатели',
-      image: '/product-motor.jpg',
-      specs: [
-        'Мощность: 15 кВт',
-        'Напряжение: 380/660 В',
-        'Частота вращения: 1500 об/мин',
-      ],
-      badge: 'Хит продаж',
-      badgeColor: 'bg-green-500',
-      inStock: true,
-    },
-    {
-      name: 'Электропривод ЭПВ 315',
-      category: 'Электроприводы',
-      image: '/product-drive.jpg',
-      specs: [
-        'Мощность: 200 кВт',
-        'Напряжение: 380 В',
-        'Степень защиты: IP54',
-      ],
-      badge: 'Новинка',
-      badgeColor: 'bg-eldin-gold',
-      inStock: true,
-    },
-    {
-      name: 'Генератор ГСФ 800',
-      category: 'Генераторы',
-      image: '/product-generator.jpg',
-      specs: [
-        'Мощность: 800 кВА',
-        'Напряжение: 400 В',
-        'Частота: 50 Гц',
-      ],
-      badge: 'В наличии',
-      badgeColor: 'bg-eldin-blue',
-      inStock: true,
-    },
-    {
-      name: 'Электродвигатель АИР 200M6',
-      category: 'Электродвигатели',
-      image: '/product-motor.jpg',
-      specs: [
-        'Мощность: 37 кВт',
-        'Напряжение: 380/660 В',
-        'Частота вращения: 1000 об/мин',
-      ],
-      badge: null,
-      badgeColor: '',
-      inStock: true,
-    },
-  ];
-
+export default function FeaturedProducts() {
   return (
-    <section
-      ref={sectionRef}
-      className="section-padding bg-eldin-light"
-    >
+    <section className="section-padding bg-eldin-light">
       <div className="container-custom">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+        <div className="flex items-end justify-between mb-12">
           <div>
-            <span className="reveal opacity-0 inline-block text-eldin-gold font-semibold text-sm uppercase tracking-wider mb-3">
-              Популярное
-            </span>
-            <h2 className="reveal opacity-0 stagger-1 text-3xl md:text-4xl font-bold text-eldin-blue">
-              Рекомендуемая продукция
-            </h2>
+            <p className="section-label">Популярное</p>
+            <h2 className="section-title">Рекомендуемая продукция</h2>
           </div>
-          <a
-            href="#"
-            className="reveal opacity-0 stagger-2 inline-flex items-center gap-2 text-eldin-gold font-semibold hover:gap-3 transition-all"
-          >
-            Весь каталог
-            <ArrowRight className="w-5 h-5" />
+          <a href="#products" className="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-eldin-gold hover:text-eldin-gold-hover transition-colors">
+            Весь каталог <ArrowRight className="w-4 h-4" />
           </a>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product, index) => (
-            <div
-              key={index}
-              className={`reveal opacity-0 bg-white rounded-2xl overflow-hidden card-hover`}
-              style={{ animationDelay: `${(index + 3) * 0.1}s` }}
-            >
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden bg-gray-100">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                />
-                {product.badge && (
-                  <span className={`absolute top-4 left-4 ${product.badgeColor} text-white text-xs font-semibold px-3 py-1 rounded-full`}>
-                    {product.badge}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {products.map((p) => (
+            <div key={p.name} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+              {/* Image placeholder */}
+              <div className="relative h-44 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                <div className="text-4xl text-gray-300">&#9881;</div>
+                {p.badge && (
+                  <span className={`absolute top-3 left-3 ${p.badgeColor} text-white text-xs font-bold px-2.5 py-1 rounded`}>
+                    {p.badge}
                   </span>
                 )}
               </div>
-
-              {/* Content */}
               <div className="p-5">
-                <span className="text-xs text-gray-500 uppercase tracking-wider">
-                  {product.category}
-                </span>
-                <h3 className="font-bold text-eldin-blue mt-1 mb-3 line-clamp-2">
-                  {product.name}
-                </h3>
-                
-                {/* Specs */}
-                <ul className="space-y-1 mb-4">
-                  {product.specs.map((spec, i) => (
-                    <li key={i} className="text-sm text-gray-600 flex items-center gap-2">
-                      <Check className="w-3 h-3 text-eldin-gold" />
-                      {spec}
-                    </li>
+                <p className="text-xs font-bold text-eldin-gold tracking-wider mb-1">{p.category}</p>
+                <h3 className="text-sm font-bold text-eldin-blue mb-3">{p.name}</h3>
+                <div className="space-y-1.5 mb-4">
+                  {p.specs.map((s) => (
+                    <div key={s.label} className="flex justify-between text-xs text-eldin-gray">
+                      <span>{s.label}:</span>
+                      <span className="font-medium text-eldin-blue">{s.value}</span>
+                    </div>
                   ))}
-                </ul>
-
-                {/* Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  {product.inStock ? (
-                    <span className="text-sm text-green-600 flex items-center gap-1">
-                      <span className="w-2 h-2 bg-green-500 rounded-full" />
-                      В наличии
-                    </span>
-                  ) : (
-                    <span className="text-sm text-gray-500">Под заказ</span>
-                  )}
-                  <button className="text-eldin-gold font-semibold text-sm hover:underline">
-                    Заказать
-                  </button>
                 </div>
+                {p.inStock && (
+                  <span className="inline-block text-xs font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded mb-3">
+                    В наличии
+                  </span>
+                )}
+                <button className="w-full btn-primary text-sm justify-center !py-2">
+                  Заказать
+                </button>
               </div>
             </div>
           ))}
@@ -165,6 +103,4 @@ const FeaturedProducts = () => {
       </div>
     </section>
   );
-};
-
-export default FeaturedProducts;
+}

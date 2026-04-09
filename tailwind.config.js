@@ -14,6 +14,11 @@ module.exports = {
         'weg-navy-light': '#1a2a42',
         'weg-gold': '#d4a017',
         'weg-orange': '#e67e22',
+        'eldin-blue': '#1a365d',
+        'eldin-gold': '#c9a227',
+        'eldin-gold-hover': '#b8951f',
+        'eldin-gray': '#4a5568',
+        'eldin-light': '#f7fafc',
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

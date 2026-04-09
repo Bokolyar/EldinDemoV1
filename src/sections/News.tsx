@@ -1,107 +1,66 @@
-import { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 
-const News = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
+const news = [
+  {
+    category: 'Выставки',
+    date: '15 апреля 2024',
+    title: 'АО «ЭЛДИН» — участник выставки Нефтегаз-2024',
+    description:
+      'Приглашаем посетить наш стенд на крупнейшей международной выставке нефтегазового оборудования. Мы представим новую линейку электродвигателей для нефтегазовой отрасли.',
+  },
+  {
+    category: 'Производство',
+    date: '28 марта 2024',
+    title: 'Запуск новой линии производства энергоэффективных двигателей',
+    description:
+      'Введена в эксплуатацию современная линия по производству электродвигателей класса энергоэффективности IE4 и IE5.',
+  },
+  {
+    category: 'Партнерство',
+    date: '10 марта 2024',
+    title: 'Расширение географии поставок в страны СНГ',
+    description:
+      'Подписаны новые контракты на поставку электротехнической продукции в Казахстан, Узбекистан и Беларусь.',
+  },
+];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elements = sectionRef.current?.querySelectorAll('.reveal');
-    elements?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
-  const news = [
-    {
-      date: 'АПР./02',
-      title: 'ЭЛДИН устанавливает новый стандарт в технологии электродвигателей для дымоудаления',
-      category: 'Продукты и решения',
-    },
-    {
-      date: 'АПР./01',
-      title: 'Энергоэффективность и автоматизация: модернизация системы фильтрации с решением ЭЛДИН',
-      category: 'Продукты и решения',
-    },
-    {
-      date: 'МАР./23',
-      title: 'Решения ЭЛДИН по управлению активами оптимизируют предиктивное обслуживание',
-      category: 'Продукты и решения',
-    },
-  ];
-
+export default function News() {
   return (
-    <section
-      ref={sectionRef}
-      id="news"
-      className="section-weg section-weg-light"
-    >
-      <div className="container-weg">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+    <section id="news" className="section-padding bg-eldin-light">
+      <div className="container-custom">
+        <div className="flex items-end justify-between mb-12">
           <div>
-            <h2 className="reveal title-section text-weg-navy">
-              Новости
-            </h2>
+            <p className="section-label">Новости</p>
+            <h2 className="section-title">События компании</h2>
           </div>
-          <a
-            href="#"
-            className="reveal inline-flex items-center gap-2 text-weg-navy font-semibold hover:text-weg-gold transition-colors"
-          >
-            Все новости
-            <ArrowRight className="w-5 h-5" />
+          <a href="#" className="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-eldin-gold hover:text-eldin-gold-hover transition-colors">
+            Все новости <ArrowRight className="w-4 h-4" />
           </a>
         </div>
 
-        {/* News List */}
-        <div className="space-y-0">
-          {news.map((item, index) => (
-            <a
-              key={index}
-              href="#"
-              className="reveal news-item block py-6 border-b border-gray-200 hover:bg-gray-50 transition-colors group"
-              style={{ transitionDelay: `${index * 100}ms` }}
+        <div className="grid md:grid-cols-3 gap-6">
+          {news.map((item) => (
+            <article
+              key={item.title}
+              className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100"
             >
-              <div className="flex flex-col md:flex-row md:items-center gap-4">
-                {/* Date */}
-                <div className="flex-shrink-0 w-20">
-                  <span className="text-weg-gold font-bold text-lg">
-                    {item.date}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="flex-grow">
-                  <span className="text-sm text-gray-500 mb-1 block">
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-xs font-bold text-eldin-gold bg-eldin-gold/10 px-2.5 py-1 rounded">
                     {item.category}
                   </span>
-                  <h3 className="text-lg md:text-xl font-semibold text-weg-navy group-hover:text-weg-gold transition-colors">
-                    {item.title}
-                  </h3>
+                  <span className="text-xs text-eldin-gray">{item.date}</span>
                 </div>
-
-                {/* Arrow */}
-                <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <ArrowRight className="w-6 h-6 text-weg-gold" />
-                </div>
+                <h3 className="text-base font-bold text-eldin-blue mb-3 leading-snug">{item.title}</h3>
+                <p className="text-sm text-eldin-gray mb-4 line-clamp-3">{item.description}</p>
+                <a href="#" className="inline-flex items-center gap-1 text-sm font-semibold text-eldin-gold hover:text-eldin-gold-hover transition-colors">
+                  Читать далее <ArrowRight className="w-4 h-4" />
+                </a>
               </div>
-            </a>
+            </article>
           ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default News;
+}
