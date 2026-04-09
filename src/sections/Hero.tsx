@@ -21,7 +21,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container-custom pt-24 sm:pt-32 pb-16 sm:pb-20">
+      <div className="relative z-10 container-custom pt-24 sm:pt-32 pb-16 sm:pb-20 flex flex-col min-h-screen justify-center">
         <div className="max-w-3xl">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-4 sm:mb-6 animate-fade-in-up">
@@ -59,13 +59,13 @@ export default function Hero() {
             </div>
           ))}
         </div>
-      </div>
 
-      {/* Scroll indicator - mouse with bouncing wheel */}
-      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-white/50 z-10">
-        <span className="text-xs uppercase tracking-wider">Листайте вниз</span>
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
-          <div className="w-1.5 h-3 bg-white/50 rounded-full animate-bounce" />
+        {/* Scroll indicator - mouse with bouncing wheel */}
+        <div className="hidden md:flex flex-col items-center gap-2 text-white/50 mt-8">
+          <span className="text-xs uppercase tracking-wider">Листайте вниз</span>
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+            <div className="w-1.5 h-3 bg-white/50 rounded-full animate-bounce" />
+          </div>
         </div>
       </div>
     </section>
