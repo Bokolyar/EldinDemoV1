@@ -1,57 +1,48 @@
-import { ArrowRight, Users, Globe, TrendingUp } from 'lucide-react';
-
-const highlights = [
-  { icon: Users, label: '2000+ сотрудников' },
-  { icon: Globe, label: '50+ стран-партнеров' },
-  { icon: TrendingUp, label: 'Рост производства 15% в год' },
-];
+import { ArrowRight } from 'lucide-react';
 
 export default function About() {
   return (
     <section id="about" className="section-padding bg-white">
       <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image side */}
           <div className="relative">
-            <div className="absolute -top-4 -left-4 bg-eldin-gold text-white rounded-xl px-6 py-4 z-10 shadow-lg">
-              <div className="text-3xl font-bold">70+</div>
-              <div className="text-sm">лет опыта</div>
-            </div>
-            <div className="rounded-xl overflow-hidden shadow-lg">
+            <div className="relative rounded-2xl overflow-hidden">
               <img
                 src="/hero-bg.jpg"
                 alt="Производство ЭЛДИН"
-                className="w-full h-80 lg:h-96 object-cover"
+                className="w-full h-80 lg:h-[28rem] object-cover"
               />
+            </div>
+            <div className="absolute -bottom-6 -right-6 lg:bottom-8 lg:-right-8 bg-eldin-gold rounded-2xl p-6 shadow-xl">
+              <div className="text-4xl font-bold text-white">70+</div>
+              <div className="text-white/90 text-sm">лет опыта</div>
             </div>
           </div>
 
           {/* Text side */}
           <div>
-            <p className="section-label">О компании</p>
-            <h2 className="section-title">Ярославский электромашиностроительный завод</h2>
-            <p className="text-eldin-gray mb-4">
-              АО &laquo;ЭЛДИН&raquo; &mdash; одно из крупнейших предприятий электротехнической отрасли России. С 1954 года мы производим высококачественное электротехническое оборудование для промышленности, энергетики и транспорта.
-            </p>
-            <p className="text-eldin-gray mb-6">
-              Завод оснащен современным технологическим оборудованием и располагает собственной конструкторской и исследовательской базой.
-            </p>
-
-            <div className="flex flex-col gap-3 mb-8">
-              {highlights.map((h) => {
-                const Icon = h.icon;
-                return (
-                  <div key={h.label} className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-eldin-gold/10 flex items-center justify-center text-eldin-gold">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <span className="text-sm font-medium text-eldin-blue">{h.label}</span>
-                  </div>
-                );
-              })}
+            <span className="inline-block text-eldin-gold font-semibold text-sm uppercase tracking-wider mb-3">
+              О компании
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-eldin-blue mb-6">
+              Ярославский электромашиностроительный завод
+            </h2>
+            <div className="space-y-4 text-gray-600 mb-8">
+              <p>
+                АО &laquo;ЭЛДИН&raquo; &mdash; одно из крупнейших предприятий электротехнической отрасли России. С 1954 года мы производим высококачественное электротехническое оборудование для промышленности, энергетики и транспорта.
+              </p>
+              <p>
+                Наш завод оснащен современным оборудованием, что позволяет выпускать продукцию мирового уровня. Мы постоянно совершенствуем технологии и внедряем инновации.
+              </p>
+              <p>
+                Продукция ЭЛДИН поставляется более чем в 50 стран мира и успешно эксплуатируется в самых разных климатических условиях.
+              </p>
             </div>
-
-            <a href="#" className="btn-primary">
+            <a
+              href="#"
+              className="inline-flex items-center gap-2 text-eldin-gold font-semibold hover:gap-3 transition-all"
+            >
               Подробнее о компании <ArrowRight className="w-4 h-4" />
             </a>
           </div>

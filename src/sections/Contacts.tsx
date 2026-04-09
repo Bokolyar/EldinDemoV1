@@ -8,51 +8,54 @@ const contactInfo = [
 
 export default function Contacts() {
   return (
-    <section id="contacts" className="section-padding bg-white">
+    <section id="contacts" className="section-padding bg-eldin-blue">
       <div className="container-custom">
-        <div className="text-center mb-12">
-          <p className="section-label">Контакты</p>
-          <h2 className="section-title">Свяжитесь с нами</h2>
-          <p className="section-subtitle mx-auto">
-            Готовы ответить на ваши вопросы и помочь с выбором оборудования. Оставьте заявку — мы перезвоним в ближайшее время.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact info */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+          {/* Left side - info */}
           <div>
-            <div className="space-y-6 mb-8">
+            <span className="inline-block text-eldin-gold font-semibold text-sm uppercase tracking-wider mb-3">
+              Контакты
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Свяжитесь с нами
+            </h2>
+            <p className="text-white/80 mb-10 max-w-lg">
+              Готовы ответить на ваши вопросы и помочь с выбором оборудования. Оставьте заявку — мы перезвоним в ближайшее время.
+            </p>
+
+            <div className="space-y-6">
               {contactInfo.map((c) => {
                 const Icon = c.icon;
                 return (
                   <div key={c.label} className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-eldin-gold/10 flex items-center justify-center text-eldin-gold shrink-0">
-                      <Icon className="w-5 h-5" />
+                    <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0">
+                      <Icon className="w-5 h-5 text-eldin-gold" />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-eldin-blue">{c.label}</p>
-                      <p className="text-sm text-eldin-gray">{c.value}</p>
+                      <p className="text-white/60 text-sm">{c.label}</p>
+                      <p className="text-white font-medium">{c.value}</p>
                     </div>
                   </div>
                 );
               })}
             </div>
 
-            <div className="bg-eldin-light rounded-xl p-6">
+            {/* Working hours */}
+            <div className="mt-10 p-6 bg-white/5 rounded-2xl">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-eldin-gold/10 flex items-center justify-center text-eldin-gold shrink-0">
-                  <Clock className="w-5 h-5" />
+                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0">
+                  <Clock className="w-5 h-5 text-eldin-gold" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-eldin-blue mb-2">Режим работы</p>
+                  <p className="text-white font-medium mb-2">Режим работы</p>
                   <div className="space-y-1">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-eldin-gray">Понедельник — Пятница</span>
-                      <span className="font-medium text-eldin-blue">8:00 — 17:00</span>
+                    <div className="flex justify-between gap-8 text-sm">
+                      <span className="text-white/60">Понедельник — Пятница</span>
+                      <span className="text-white font-medium">8:00 — 17:00</span>
                     </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-eldin-gray">Суббота — Воскресенье</span>
-                      <span className="font-medium text-eldin-blue">Выходной</span>
+                    <div className="flex justify-between gap-8 text-sm">
+                      <span className="text-white/60">Суббота — Воскресенье</span>
+                      <span className="text-white font-medium">Выходной</span>
                     </div>
                   </div>
                 </div>
@@ -60,52 +63,44 @@ export default function Contacts() {
             </div>
           </div>
 
-          {/* Form */}
+          {/* Right side - form */}
           <div>
-            <h3 className="text-lg font-bold text-eldin-blue mb-6">Оставить заявку</h3>
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <div>
+            <div className="bg-white rounded-2xl p-8">
+              <h3 className="text-xl font-bold text-eldin-blue mb-6">Оставить заявку</h3>
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                 <input
                   type="text"
-                  placeholder="Ваше имя"
+                  placeholder="Иван Иванов"
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-eldin-gold/30 focus:border-eldin-gold transition-colors"
                 />
-              </div>
-              <div>
                 <input
                   type="tel"
-                  placeholder="Телефон"
+                  placeholder="+7 (___) ___-__-__"
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-eldin-gold/30 focus:border-eldin-gold transition-colors"
                 />
-              </div>
-              <div>
                 <input
                   type="email"
-                  placeholder="Email"
+                  placeholder="example@mail.ru"
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-eldin-gold/30 focus:border-eldin-gold transition-colors"
                 />
-              </div>
-              <div>
                 <input
                   type="text"
-                  placeholder="Интересующая продукция"
+                  placeholder="Например: Электродвигатели"
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-eldin-gold/30 focus:border-eldin-gold transition-colors"
                 />
-              </div>
-              <div>
                 <textarea
-                  placeholder="Сообщение"
+                  placeholder="Опишите ваш запрос..."
                   rows={4}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-eldin-gold/30 focus:border-eldin-gold transition-colors resize-none"
                 />
-              </div>
-              <button type="submit" className="btn-primary w-full justify-center">
-                Отправить заявку
-              </button>
-              <p className="text-xs text-eldin-gray text-center">
-                Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
-              </p>
-            </form>
+                <button type="submit" className="btn-primary w-full text-center justify-center flex items-center gap-2">
+                  Отправить заявку
+                </button>
+                <p className="text-xs text-gray-500 text-center">
+                  Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+                </p>
+              </form>
+            </div>
           </div>
         </div>
       </div>
